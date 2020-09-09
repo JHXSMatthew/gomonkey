@@ -135,9 +135,6 @@ func (this *Patches) Reset() {
 
 func (this *Patches) ApplyCore(target, double reflect.Value) *Patches {
 	this.check(target, double)
-	if _, ok := this.originals[target]; ok {
-		panic("patch has been existed")
-	}
 
 	this.valueHolders[double] = double
 	original := replace(*(*uintptr)(getPointer(target)), uintptr(getPointer(double)))
